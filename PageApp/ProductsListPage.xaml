@@ -12,6 +12,7 @@
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="9*"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0">
             <TextBox x:Name="txbSearch" Width="550" Margin="5"/>
@@ -31,5 +32,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <StackPanel x:Name="navigatePanel" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="2"/>
     </Grid>
 </Page>

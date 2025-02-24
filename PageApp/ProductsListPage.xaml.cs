@@ -21,10 +21,64 @@ namespace DVDyyy.PageApp
     /// </summary>
     public partial class ProductsListPage : Page
     {
+        public int pageNum = 1;
+        List<Film> listProd = BD_Class.connection.Film.ToList();
         public ProductsListPage()
         {
             InitializeComponent();
-            ProdList.ItemsSource = BD_Class.connection.Film.ToList();
+            
+            int pagesCount = (listProd.Count / 5) % 1 > 0 ? listProd.Count / 5 + 1 : listProd.Count / 5;
+            navigatePanel.Children.Clear();
+            if (pageNum > 1)
+            {
+                Button button = new Button();
+                button.Content = "<";
+                button.Click += ClEvent;
+                navigatePanel.Children.Add(button);
+            }
+
+            for (int i = 1; i <= pagesCount; i++)
+            {
+                Button button = new Button();
+                button.Content = i.ToString();
+                button.Click += ClEvent;
+                navigatePanel.Children.Add(button);
+            }
+
+            if (pageNum > pagesCount)
+            {
+                Button button = new Button();
+                button.Content = ">";
+                button.Click += ClEvent;
+                navigatePanel.Children.Add(button);
+            }
+            ProdList.ItemsSource = listProd.Skip((pageNum-1)*5).Take(5).ToList();
+           
+            
+        }
+        private void ClEvent(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            if (btn.Content.ToString() == "<")
+            {
+                pageNum -= 1;
+            }
+            else if (btn.Content.ToString() == ">")
+            {
+                pageNum += 1;
+            }
+            else
+            {
+                pageNum = int.Parse(btn.Content.ToString());
+            }
+           FillLV(pageNum);
+
+
+
+        }
+        public void FillLV( int pageNum)
+        {
+            ProdList.ItemsSource =listProd.Skip((pageNum-1)*5).Take(5).ToList();
         }
     }
 }
