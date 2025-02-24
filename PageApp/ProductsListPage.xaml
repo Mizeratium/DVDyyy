@@ -1,0 +1,35 @@
+﻿<Page x:Class="DVDyyy.PageApp.ProductsListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DVDyyy.PageApp"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="1000" MinHeight="500" MinWidth="1000"
+      Title="ProductsListPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="9*"/>
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0">
+            <TextBox x:Name="txbSearch" Width="550" Margin="5"/>
+            <ComboBox x:Name="cmbSearch" Width="150" Margin="5"/>
+            <Button Content="Поиск"/>
+        </DockPanel>
+        <ListView x:Name="ProdList" Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel>
+                        <TextBlock Text="{Binding ID }" Foreground="Gray"/>
+                        <TextBlock Text="{Binding title }"/>
+                        <TextBlock Text="{Binding Genre.title }"/>
+                        <TextBlock Text="{Binding year_of_release }" Foreground="Gray"/>
+                        <TextBlock Text="{Binding rental_cost }" HorizontalAlignment="Right"/>
+                    </DockPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>

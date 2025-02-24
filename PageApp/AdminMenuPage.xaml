@@ -1,0 +1,39 @@
+﻿<Page x:Class="DVDyyy.PageApp.AdminMenuPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DVDyyy.PageApp"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="1000" MinHeight="500" MinWidth="1000"
+      Title="AdminMenuPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0" Grid.ColumnSpan="3">
+            <MenuItem Header="Товары">
+                <MenuItem Header="Список товаров" Click="MenuItem_Click"/> <!--ProductsListPage-->
+                <MenuItem Header="Добавить товар" Click="MenuItem_Click_1"/> <!--NewProductPage-->
+            </MenuItem>
+            <MenuItem Header="Покупатели">
+                <MenuItem Header="Все клиенты" Click="MenuItem_Click_2"/> <!--ClientsListPage-->
+                <MenuItem Header="Новый клиент" Click="MenuItem_Click_3"/> <!--NewClientPage-->
+            </MenuItem>
+            <MenuItem Header="Сотрудники">
+                <MenuItem Header="Все сотрудники" Click="MenuItem_Click_4"/> <!--EmployeersListPage-->
+                <MenuItem Header="Новый сотрудник" Click="MenuItem_Click_5"/> <!--NewEmployeePage-->
+            </MenuItem>
+            <MenuItem Header="Отчеты" Click="MenuItem_Click_6"/>
+        </Menu>
+        <Frame x:Name="MenuFrame" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Page>
