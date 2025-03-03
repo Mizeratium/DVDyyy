@@ -26,5 +26,13 @@ namespace DVDyyy.PageApp
             InitializeComponent();
             EmployeeList.ItemsSource = BD_Class.connection.Employee.ToList();
         }
+
+        private void txbSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (txbSearch.Text != null)
+            {
+                EmployeeList.ItemsSource = BD_Class.connection.Client.Where(z => z.surname.Contains(txbSearch.Text) || z.name.Contains(txbSearch.Text) || z.patronymic.Contains(txbSearch.Text)).ToList();
+            }
+        }
     }
 }

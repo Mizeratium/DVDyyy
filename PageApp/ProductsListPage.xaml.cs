@@ -80,5 +80,13 @@ namespace DVDyyy.PageApp
         {
             ProdList.ItemsSource =listProd.Skip((pageNum-1)*5).Take(5).ToList();
         }
+
+        private void txbSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (txbSearch.Text != null)
+            {
+                ProdList.ItemsSource = BD_Class.connection.Film.Where(z => z.title.Contains(txbSearch.Text)).ToList();
+            }
+        }
     }
 }

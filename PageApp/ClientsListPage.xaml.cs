@@ -26,5 +26,18 @@ namespace DVDyyy.PageApp
             InitializeComponent();
             ClientsList.ItemsSource = BD_Class.connection.Client.ToList();
         }
+
+        private void txbSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (txbSearch.Text != null)
+            {
+                ClientsList.ItemsSource = BD_Class.connection.Client.Where(z => z.surname.Contains(txbSearch.Text) || z.name.Contains(txbSearch.Text) || z.patronymic.Contains(txbSearch.Text)).ToList();
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -62,7 +62,7 @@ namespace DVDyyy.PageApp
 
         private void MenuItem_Click_6(object sender, RoutedEventArgs e)
         {
-            //Отчеты
+            MenuFrame.NavigationService.Navigate(new PageApp.RepPage());
         }
     }
 }

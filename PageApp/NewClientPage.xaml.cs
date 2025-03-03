@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DVDyyy.DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,7 @@ namespace DVDyyy.PageApp
     /// </summary>
     public partial class NewClientPae : Page
     {
+        Client client = new Client();
         public NewClientPae()
         {
             InitializeComponent();
@@ -27,7 +29,20 @@ namespace DVDyyy.PageApp
 
         private void ClEventAddNewProduct(object sender, RoutedEventArgs e)
         {
-
+            if (txbSurname.Text != "" && txbName.Text != "" && txbPatronymic.Text != "" && txbPhoneNumber.Text != "")
+            {
+                client.surname = txbSurname.Text;
+                client.name = txbName.Text;
+                client.patronymic = txbPatronymic.Text;
+                client.phone = txbPhoneNumber.Text;
+                BD_Class.connection.Client.Add(client);
+                BD_Class.connection.SaveChanges();
+                MessageBox.Show("Клиент добавлен");
+            }
+            else
+            {
+                MessageBox.Show("Клиент не добавлен");
+            }
         }
     }
 }
